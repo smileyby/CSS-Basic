@@ -338,9 +338,26 @@ li:last-child {
 
 ### CSS选择器 - 伪元素选择器
 * :first-line 
+> `::first-line`在某块级元素的第一行应用样式。第一行的长度取决于很多因素，包括元素宽度，文档宽度和文本字体大小
+> 和其他所有的伪元素一样，::first-line不能匹配任何真实存在的html元素
+> ::first-line伪元素只能在块容器中，所以`::firsty-line`伪元素只能在一个display值为`block`/`inline-block`/`table-cell`/`table-caption`中有用。其他的类型中，`::first-line`是不起作用的。
+> css3写法：`::first-line`css2写法：`:first-line`
+
+[点击查看-应用实例](https://codepen.io/smileyby/pen/ERzYOz)
 * :first-letter
+> 选中块级元素第一行的第一个字母
+> **出于兼容性考虑，建议使用`:first-letter`**
+[点击查看-效果示例](https://codepen.io/smileyby/pen/qKGBdO)
 * :before
+> `::before`创建一个伪元素，其将成为匹配选择中的元素的第一个子元素。常通过`content`属性来为一个元素添加修饰性的内容。此元素默认为行内元素。
+
+[点击查看-示例效果1](https://codepen.io/smileyby/pen/QxRWdZ)
+[点击查看-示例效果2](https://codepen.io/smileyby/pen/MXdWJd)
 * :after
+> `::before`创建一个伪元素，其将成为匹配选择中的元素的最后一个子元素。常通过`content`属性来为一个元素添加修饰性的内容。此元素默认为行内元素。
+
+[点击查看-示例效果1](https://codepen.io/smileyby/pen/JZqjJX)
+[点击查看-示例效果2](https://codepen.io/smileyby/pen/LroYLR)
 
 ### CSS权重和基本规则
 * [CSS权重和基本规则](http://www.w3cplus.com/css/css-specificity-things-you-should-know.html)
