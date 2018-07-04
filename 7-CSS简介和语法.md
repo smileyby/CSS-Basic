@@ -358,6 +358,8 @@ li:last-child {
 1. 字体系列样式属性
 2. 文本系列样式属性 text-align line-height text-indent
 
+**text-indent:-9999px;首段缩进足够大，文字就会消失**
+
 ### 盒子模型
 ![盒子模型](https://mdn.mozillademos.org/files/72/boxmodel%20(1).png)
 [点击查看-MDN盒子模型详解](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)
@@ -514,6 +516,186 @@ li:last-child {
 
 **元素的实际大小只会受padding和border的影响**
 **如果加了padding或border的值，计算width和height的值是要对应减去，否则内容会溢出**
+
+## CSS 背景相关
+###background 背景
+* 背景属性说些：可以在一个生命中这是所有的背景属性
+* 背景图像支持引入多个图
+* 主要属性有：
+> background-color 
+>> CSS属性中的background-color会设置元素的背景色，属性值为**颜色值**或关键字**transparent**二者选其一
+>> [点击查看-背景色示例](https://codepen.io/smileyby/pen/mKgXxr)
+
+> background-image
+>> 
+* background-image属性用于为一个元素设置一个或多个背景图像。图像在绘制时，以x方向堆叠方式进行。先指定图像会在之后指定的图像上面绘制，因此指定的第一个图像最接近用户。  
+* 然后元素的borders会在他们之上被绘制，而`background-color`会在他们之下绘制。图像绘制与盒子以及盒子的边框的关系，需要在`background-clip`和`background-origin`中定义
+* 如果一个指定的图像无法被绘制（比如，设定的URI会便是的文件无法加载），浏览器会将此情况等同于其值被设置为none
+* 即使图像是不透明的，背景色在通常情况下并不会被显示，web开发者仍然应该指定`background-color`属性。如果图像无法加载-例如在网络连接断开的情况下--背景色就会被绘制。
+[点击查看background-image示例](https://codepen.io/smileyby/pen/ERJExx)
+
+> background-repeat 
+>> 
+>> * background-repeat定义背景图像的重复方式。背景图可以沿着水平轴，垂直轴，两个轴重复，或者根本不重复。
+>> * background-repeat 可能的取值：<table>
+	<tr>
+		<td>单值</td>
+		<td>双值</td>
+	</tr>
+	<tr>
+		<td>repeat-x</td>
+		<td>repeat no-repeat</td>
+	</tr>
+	<tr>
+		<td>repeat-y</td>
+		<td>no-repeat repeat</td>
+	</tr>
+	<tr>
+		<td>repeat</td>
+		<td>repeat repeat</td>
+	</tr>
+	<tr>
+		<td>space</td>
+		<td>space space</td>
+	</tr>
+	<tr>
+		<td>round</td>
+		<td>round round</td>
+	</tr>
+	<tr>
+		<td>no-repeat</td>
+		<td>no-repeat no-repeat</td>
+	</tr>
+</table>
+* 在双值语法中，第一个值表示水平重复行为，第二个值表示垂直重复行为。下面是关于每一个值是怎么工作的说明：
+<table>
+	<tr>
+		<td>repeat</td>
+		<td>图像会按需重复来覆盖整个背景图片所在的区域，最后一个图像会被剪裁，如果他的大小不合适的话</td>
+	</tr>
+	<tr>
+		<td>space</td>
+		<td>图像会尽可能的重复，但是不会剪裁，第一个和最后一个图像会被固定在元素的相应的边上，同时空白会均匀地分布在图像之间 background-position 属性会被忽略，除非只有一个图像能被无建材地显示，只有一种强狂下检查器会发生，那就是图像太大以至于没有足够的空间来完整展示一个图像</td>
+	</tr>
+	<tr>
+		<td>round</td>
+		<td>随着允许的空间在尺寸上的增长，被重复的图像将会伸展（没有空隙），直到有足够的空间来添加一个图像，当下一个图像被添加后，所有的当前的图像会被压缩来腾出空间，例如，一个图像原始大小是260px，重复三次之后，可能会被伸展到300px，直到另一个图像被加进来，这样我们就可能被压缩到225px;
+</td>
+	</tr>
+	<tr>
+		<td>no-repeat</td>
+		<td>图像不会被重复（因为背景图像所在的区域可能没有完全覆盖，那个没有被重复的背景图像的位置由background-position属性来决定</td>
+	</tr>
+<table>
+
+[点击查看-background-repeat示例](https://codepen.io/smileyby/pen/WyWzZP)
+
+> background-position
+>> background-position指定背景图片的初始位置
+* 对于每一个被设定的背景图片来说，background-position这个CSS属性设置了一个初始位置。这个初始位置是相对于background-origin定义的背景位置图层（padding-box|border-box|content-box）来说的。（初始值：`0% 0%`）
+* 一个值时，对应在取值的位置，另一个方向的位置为居中
+* 两个值时，水平和垂直方向按照取值来确定
+* 两张背景图片是，规则和上面一样。
+```css
+/* 关键词取值 */
+background-position: top;
+background-position: bottom;
+background-position: left;
+background-position: right;
+background-position: center;
+
+/* 百分比取值 */
+background-position: 20% 75%;、
+
+/* 长度取值 */
+background-position: 0 0;
+background-position: 1cm 2cm;
+background-position: 10ch 8em;
+
+/* 多张背景图时 */
+background-position: 0 0， center;
+
+/* Edge offsets values */
+background-position: bottom 10px right 20px;
+background-position: right 3em bottom 10px;
+background-position: bottom 10px right;
+background-position: top right 10px;
+/* 全局取值 */
+background-position: inherit;
+background-position: initial;
+background-position: unset;
+``` 
+
+[点击查看-效果展示](https://codepen.io/smileyby/pen/MXRPzz)
+
+> background-attachment
+>> background-attachment属性决定背景是在视口中固定的还是随包含它的区块滚动。
+>>
+* 可能的取值：scroll/local/scroll/inherit；
+* fixed-此关键字表示内容相对于视口固定。即使一个元素拥有滚动机制，背景也不会随着元素的内容滚动。
+* local-此关键字表示背景相对于元素的内容固定。如果一个元素拥有滚动机制，背景将会随着元素的内容滚动，并且背景的绘制区域和定位区域是相对于可滚动区域而不是包含他们的边框
+* scroll-此关键字表示背景相对于元素本身固定，而不是随着他的内容滚动（对元素边框是有效的）
+
+[点击查看-效果展示](https://codepen.io/smileyby/pen/OEGrYy)
+**三个属性的区别，请在上面网页中自行修改体验。**
+ 
+> background-size
+>> 设置背景图大小
+>>
+* 注意：没有被背景图片覆盖的北京区域仍然会显示用`background-color`属性设置的背景颜色，此外，如果背景图片设置了透明或者半透明属性，臣在背景图片后面的背景色也会显示出来。
+* 单张图片的背景大小可以使用：关键词`contain`（缩放背景图片完整装入背景区，可能背景部分空白）或 关键词`cover`（缩放背景图片完全覆盖背景区，可能背景图片部分看不见）或设定宽度和高度
+* 当通过宽度和高度来设定尺寸时，你可以提供一或两个数值：如果仅有一个数值被给定，这个数值将作为宽度值大小，高度值将被设定为auto；如果两个数值被给定，第一个将作为宽度值大小，第二个将作为高度值大小。
+```css
+/* 关键字 */
+background-size: cover
+background-size: contain
+
+/* 一个值: 这个值指定图片的宽度，图片的高度隐式的为auto */
+background-size: 50%
+background-size: 3em
+background-size: 12px
+background-size: auto
+
+/* 两个值 */
+/* 第一个值指定图片的宽度，第二个值指定图片的高度 */
+background-size: 50% auto
+background-size: 3em 25%
+background-size: auto 6px
+background-size: auto auto
+
+/* 逗号分隔的多个值：设置多重背景 */
+background-size: auto, auto     /* 不同于background-size: auto auto */
+background-size: 50%, 25%, 25%
+background-size: 6px, auto, contain
+
+/* 全局属性 */
+background-size: inherit;
+background-size: initial;
+background-size: unset;
+``` 
+[点击查看-效果展示](https://codepen.io/smileyby/pen/wXZOPE)
+> background-origin
+>> background-origin 规定了指定背景图片`background-image`属性的原点位置的背景相对区域
+>> 可能的取值：
+>>
+* border-box 背景图片的摆放以border区域为参考
+* padding-box 背景图片的摆放位置以padding、
+*区域为参考
+* content-box 背景图片的摆放区域以content区域为参考
+[点击查看-background-origin效果](https://codepen.io/smileyby/pen/oyOOvp)
+
+**有多张背景图片是，background-origin可以设置为`background-origin: content-box, padding-box;`根据设置来确定原点的位置所在。**
+ 
+> background-clip
+>> background-clip 设置元素的背景是否延伸到边框下面
+>>
+* 如果没有设置背景颜色或图片，那么这个属性只有在边框（border）设置为透明或半透明是才能看到效果，不然的话，这个属性造成的样式变化会被边框遮盖住。
+* 可能的取值：
+* border-box 背景延伸到边框外延
+* padding-box 边框下面没有背景，即背景延伸到内边距外沿
+* content-box 背景被剪裁到内容外沿
+
+[点击查看-效果展示](https://codepen.io/smileyby/pen/mKYbOJ)
 
 
 ## 参考链接
