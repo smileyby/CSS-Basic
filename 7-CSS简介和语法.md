@@ -791,8 +791,20 @@ background-size: unset;
 > 
 1. 手动设置高度
 2. 给浮动元素的父元素设置overflow:hidden/auto
-3. 在浮动元素的父元素结束标签之前加一个具有块元素特点的标签（如div），给元素加一个clear:both <div style="clear:both">/div>[点击查看-清除浮动效果](https://codepen.io/smileyby/pen/ZRNmrd)
-4. clearfix去除浮动
+3. 在浮动元素的父元素结束标签之前加一个具有块元素特点的标签（如div），给元素加一个clear:both <div style="clear:both">/div>
+4. 利用伪元素:after除浮动
+
+[点击查看-清除浮动效果](https://codepen.io/smileyby/pen/ZRNmrd)
+
+## 如何让元素消失在我们的视野中
+1. opacity:0;
+2. display: none;
+3. visibility: hidden;
+4. height:0;和overflow:hidden;
+5. line-height:0;和overflow:hidden;（没有设置高度的情况下）
+6. margin/padding设置足够大 只要让他消失即可
+7. 利用transform属性 让translate坐标设置足够大
+
 
 ## 参考链接
 [CSS 参考](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference)
