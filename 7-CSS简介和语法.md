@@ -714,6 +714,85 @@ background-size: unset;
 
 [点击查看-效果展示](https://codepen.io/smileyby/pen/mKYbOJ)
 
+## overflow:hidden的多种作用
+1. overflow 移除隐藏
+2. 清除浮动（父元素内的子元素如果浮动，则父元素不能被撑开，使用overflow:hidden;来清除浮动）
+3. 解决margin-top的传递问题
+
+[点击查看-效果展示](https://codepen.io/smileyby/pen/NzVjOa)
+
+## 多个元素在一行显示
+* display:inline;
+* display:inline-block;
+* float: left/right;
+> 【display:inline-block;元素特点】
+> 
+* 让盒子横向排列
+* vertical-align属性会影响到inline-block元素，你可能会把它的值设置为top
+* 你需要设置每一列的宽度
+* 如果HTML源代码中元素之间有空格，那么列与列之间会产生间隙
+
+[点击查看-效果示例](https://codepen.io/smileyby/pen/LroLGp)
+
+## 单行文本和单行文本出现省略号的方法
+> 单行文本：
+> 
+>> 单行文本出现省略号的条件：
+>
+* 容器元素必须要有宽度
+* 溢出隐藏（overflow:hidden;）
+* 强制文字不折行（white-space:nowrap）
+* 文字以省略号方式隐藏（text-overflow:ellipsis）
+
+> 多行文本
+> 
+>> 多行文本出现省略号的条件：
+>
+* 弹性盒模型（display:-webkit-box;）
+* 规定元素的排列方式：垂直排列 （-webkit-box-orient: vertical）
+* 需要显示的文字的行数（-webkit-line-clamp:2）
+* 溢出隐藏 （overflow:hidden）
+* 
+**主要用在移动端手机页面** 
+
+[点击查看-省略号展示效果](https://codepen.io/smileyby/pen/BVedav)
+
+## float浮动
+> 浮动元素的特点：
+> 
+1. 浮动元素在一行显示
+2. 设置属性值为left时，浮动元素会一次从父级盒子的左侧项右侧排布，设置属性为right时，浮动元素会一次从父级盒子的右侧向左侧排布
+3. 浮动元素自动具有块级元素的属性
+4. 浮动元素脱离文档流
+5. 浮动元素内的子元素，不会继承浮动属性
+6. 浮动元素下面的元素不能识别浮动元素的高度和位置
+7. 浮动元素本身具有块元素的特点，所以用了浮动就不需要再加display:block;了[点击查看-示例代码](https://codepen.io/anon/pen/yEWKLx)
+
+## 文档流和脱离文档流
+* 文档流：指的是元素排版布局过程中，元素会自动从左到右，从上到下的流式排列。并最终窗体自上而下分成一行行，并在每行中从左到右的顺序排放元素；
+* 每个非独董块级元素都独占一行，浮动元素则按照规定在行的一段。若当前行容不下，则另起新行在浮动
+* 内联元素也不会独占一行；几乎所有的元素均可生成子行，用于排放子元素
+* 标准文档流登记：分为连个，**块级元素** **行内元素**
+* 脱离文档流：文档流内的正常元素识别不到这个元素了（脱离文档流的元素相当于平行漂浮在文档流之上）
+* 文档流可以分等级：块级元素（从上到下）和行内元素（从左到右）
+* 脱离文档流的影响：浮动和定位都可以
+
+## 浮动float
+* float可能的取值： left/right/none
+> float元素产生的影响：
+> 
+1. 父元素设置背景色不起作用
+2. 父元素设置内边距不会被撑开
+3. 父元素设置边框不会被撑开
+
+[点击查看-效果示例](https://codepen.io/smileyby/pen/yEWjMY)
+
+> 清除浮动的方法、
+> 
+1. 手动设置高度
+2. 给浮动元素的父元素设置overflow:hidden/auto
+3. 在浮动元素的父元素结束标签之前加一个具有块元素特点的标签（如div），给元素加一个clear:both <div style="clear:both">/div>[点击查看-清除浮动效果](https://codepen.io/smileyby/pen/ZRNmrd)
+4. clearfix去除浮动
 
 ## 参考链接
 [CSS 参考](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference)
