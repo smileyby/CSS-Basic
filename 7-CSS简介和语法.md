@@ -805,6 +805,46 @@ background-size: unset;
 6. margin/padding设置足够大 只要让他消失即可
 7. 利用transform属性 让translate坐标设置足够大
 
+## 定位-绝对定位
+> 特点：
+> 
+* 脱离文档流
+* 可以设置参照物，参照物必须是其父级元素（直系父级），如果直接父级没有一直往上查找知道找到最外层根元素为止。
+* 有宽度和高度的情况下，top和bottom同时存在，top生效，left和right同时存在，left生效
+* 没有宽度和高度的情况下，top和bottom同时设置的情况下，会将这个盒子拉大，上下值都起作用，左右同理
+* 可以设置层级关系z-index属性 
+* 相对参照物只要是定位元素就可以（绝对定位 相对定位 固定定位），优先选择相对定位（position:relative;）
+=> 绝对定位和固定定位 都会脱离文档流 不占位
+
+**注意：绝对定位一定要给他相对参照物，绝对定位一定要指明它定位的方向**
+
+## 定位-相对定位
+> 相对定位特点：
+> 
+* 不会脱离文档流
+* 可以设置上下左右四个方位属性
+* 如果同时设置 left和right，left生效；同时设置top和bottom bottom生效
+* 参照物就是自己本身
+* 可以设置z-index属性，z-index属性越大越在上
+
+**注意：z-index必须要和定位元素配合才能生效（absolute relative fixed）**
+
+## 定位-固定定位
+> 固定定位特点：
+> 
+* 脱离文档流
+* 参照物是浏览器的可视窗口
+* 任何元素都可以设置固定定位，同时设置left/right left生效；同时设置top/bottom top生效
+* 可以设置top/left/bottom/right四个方位
+* 可以通过z-index来改变层级
+
+### z-index的特点
+* 默认是书写顺序在后的定位元素覆盖在顺序在前的定位元素
+* 可以使用z-index属性修改定位元素的层级关系
+* z-index值的数字没有单位，支持负数
+* 一般都是统计元素进行层级的比较
+* 当参照物是相对定位或绝对定位的时候，父级元素之间没有z-index值，子元素的z-index值会出来作比较；
+
 
 ## 参考链接
 [CSS 参考](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference)
